@@ -51,7 +51,7 @@ function Hero() { return <section id="inicio" className="relative flex min-h-[56
   <div className="section-shell relative z-10 flex w-full flex-col justify-end pb-10 md:pb-12">
     <h1 className="font-display m-0 max-w-2xl text-3xl leading-[1.08] tracking-tight md:text-5xl">Donde el alma de Bolivia despierta tu camino.</h1>
     <p className="mt-4 max-w-2xl text-sm leading-6 text-white/85 md:text-base">Expediciones auténticas, turismo regenerativo y conexión ancestral a través de los Andes, el Lago Sagrado, valles fértiles y tierras jurásicas. Vive la inmensidad del Altiplano y la riqueza cultural boliviana con el máximo confort consciente.</p>
-    <div className="glass mt-8 grid max-w-4xl grid-cols-1 gap-4 rounded-2xl p-5 text-sm text-ink md:grid-cols-3"><Stat icon={<Terrain />} title="+10 años" text="De trayectoria en alta montaña" /><Stat icon={<People />} title="Guías nativos" text="Certificados UIAGM y bilingües" /><Stat icon={<FavoriteBorder />} title="100% huella neutra" text="Compensación y regeneración local" /></div>
+    <div className="glass mt-8 grid max-w-4xl grid-cols-1 gap-4 rounded-2xl p-5 text-sm text-ink md:grid-cols-3"><Stat icon={<Terrain />} title="+10 años" text="De trayectoria en turismo boliviano" /><Stat icon={<People />} title="Guías especializados" text="Certificados internacionalmente" /><Stat icon={<FavoriteBorder />} title="100% experiencia única" text="Turismo con conciencia" /></div>
   </div>
 </section> }
 
