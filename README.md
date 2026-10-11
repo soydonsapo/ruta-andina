@@ -2,6 +2,17 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
+## Supabase setup
+
+The Supabase CLI is initialized in `supabase/`, and the Supabase JavaScript client is installed.
+
+1. Copy `.env.example` to `.env.local`.
+2. In the Supabase dashboard, copy the project's URL and anon/publishable key into `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+3. Import `supabase` from `src/lib/supabase.js` wherever the app needs Supabase.
+4. To connect the CLI to the project, authenticate with `supabase login`, then run `supabase link --project-ref <PROJECT_REF>`.
+
+Keep `.env.local` private. Never put a Supabase `service_role` key in frontend code. Enable Row Level Security and appropriate policies for any tables accessed by the browser.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)

@@ -26,3 +26,4 @@ dist-ssr
 # Keep all hidden files and folders local, except this rule file.
 .*
 !.gitignore
+!.env.example
