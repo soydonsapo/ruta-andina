@@ -29,7 +29,7 @@ const benefits = [
   ['Alimentación Orgánica Local', 'Cocina de montaña con ingredientes frescos de origen local.'],
 ]
 
-function Logo() { return <a href="#inicio" className="flex items-center gap-3 text-lg tracking-tight text-ink no-underline"><img src={logoAgencia} alt="Ruta Andina" className="h-10 w-10 rounded-full border border-stone-200 bg-white object-cover shadow-sm" /><span className="font-display">RUTA ANDINA</span></a> }
+function Logo() { return <a href="#inicio" className="inline-flex items-center no-underline"><img src={logoAgencia} alt="Ruta Andina" className="h-11 w-auto object-contain" /></a> }
 
 function SiteHeader() {
   const [open, setOpen] = useState(false)
