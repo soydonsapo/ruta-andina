@@ -46,7 +46,7 @@ function SiteHeader() {
 
 function SectionTitle({ eyebrow, title, copy }) { return <div className="max-w-2xl"><p className="eyebrow mb-2">{eyebrow}</p><h2 className="font-display m-0 text-3xl leading-tight text-ink md:text-4xl">{title}</h2>{copy && <p className="mt-3 text-sm leading-6 text-stone-600 md:text-base">{copy}</p>}</div> }
 
-function Hero() { return <section id="inicio" className="relative flex min-h-[calc(100svh+6rem)] items-end overflow-hidden pt-28 text-white md:min-h-[660px] md:pt-32">
+function Hero() { return <section id="inicio" className="relative flex min-h-[600px] items-end overflow-hidden pt-16 text-white md:min-h-[660px] md:pt-32">
   <img src={hero} alt="Amanecer sobre los Andes peruanos" className="absolute inset-0 h-full w-full object-cover" /><div className="hero-overlay absolute inset-0" />
   <div className="section-shell relative z-10 flex w-full min-w-0 flex-col items-center justify-end pb-6 text-center md:pb-12">
     <h1 className="font-display m-0 w-full max-w-5xl break-normal text-[clamp(2rem,5.5vw,3.75rem)] leading-[1.15] tracking-tight [overflow-wrap:anywhere]">Donde el alma de Bolivia despierta tu camino.</h1>
