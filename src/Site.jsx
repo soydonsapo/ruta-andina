@@ -46,13 +46,12 @@ function SiteHeader() {
 
 function SectionTitle({ eyebrow, title, copy }) { return <div className="max-w-2xl"><p className="eyebrow mb-2">{eyebrow}</p><h2 className="font-display m-0 text-3xl leading-tight text-ink md:text-4xl">{title}</h2>{copy && <p className="mt-3 text-sm leading-6 text-stone-600 md:text-base">{copy}</p>}</div> }
 
-function Hero() { return <section id="inicio" className="relative flex min-h-[680px] items-end overflow-hidden pt-20 text-white md:min-h-[720px]">
+function Hero() { return <section id="inicio" className="relative flex min-h-[560px] items-end overflow-hidden pt-16 text-white md:min-h-[620px]">
   <img src={hero} alt="Amanecer sobre los Andes peruanos" className="absolute inset-0 h-full w-full object-cover" /><div className="hero-overlay absolute inset-0" />
-  <div className="section-shell relative z-10 flex w-full flex-col justify-end pb-12 md:pb-16">
-    <h1 className="font-display m-0 max-w-3xl text-4xl leading-[1.05] tracking-tight md:text-6xl">Donde el espíritu de los Andes despierta tu camino.</h1>
-    <p className="mt-5 max-w-xl text-sm leading-6 text-white/85 md:text-base">Expediciones auténticas, turismo regenerativo y conexión ancestral en las alturas sagradas del Perú. Vive la inmensidad con el máximo confort consciente.</p>
-    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} className="mt-7 w-fit"><Button href="#experiencias" variant="contained" endIcon={<ArrowForward />} className="!rounded-full !bg-clay !px-6 !py-3">Explorar rutas</Button></Stack>
-    <div className="glass mt-12 grid max-w-4xl grid-cols-1 gap-4 rounded-2xl p-5 text-sm text-ink md:grid-cols-3"><Stat icon={<Terrain />} title="+10 años" text="De trayectoria en alta montaña" /><Stat icon={<People />} title="Guías nativos" text="Certificados UIAGM y bilingües" /><Stat icon={<FavoriteBorder />} title="100% huella neutra" text="Compensación y regeneración local" /></div>
+  <div className="section-shell relative z-10 flex w-full flex-col justify-end pb-10 md:pb-12">
+    <h1 className="font-display m-0 max-w-2xl text-3xl leading-[1.08] tracking-tight md:text-5xl">Donde el alma de Bolivia despierta tu camino.</h1>
+    <p className="mt-4 max-w-2xl text-sm leading-6 text-white/85 md:text-base">Expediciones auténticas, turismo regenerativo y conexión ancestral a través de los Andes, el Lago Sagrado, valles fértiles y tierras jurásicas. Vive la inmensidad del Altiplano y la riqueza cultural boliviana con el máximo confort consciente.</p>
+    <div className="glass mt-8 grid max-w-4xl grid-cols-1 gap-4 rounded-2xl p-5 text-sm text-ink md:grid-cols-3"><Stat icon={<Terrain />} title="+10 años" text="De trayectoria en alta montaña" /><Stat icon={<People />} title="Guías nativos" text="Certificados UIAGM y bilingües" /><Stat icon={<FavoriteBorder />} title="100% huella neutra" text="Compensación y regeneración local" /></div>
   </div>
 </section> }
 
