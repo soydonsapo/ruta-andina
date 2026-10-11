@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Keep all hidden files and folders local, except this rule file.
+.*
+!.gitignore
