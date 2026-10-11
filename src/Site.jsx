@@ -8,6 +8,7 @@ import {
   ArrowForward, Close, DirectionsWalk, Email, FavoriteBorder, Hiking, Menu,
   People, Place, Schedule, Terrain, WhatsApp,
 } from '@mui/icons-material'
+import logoAgencia from '../.Mockups/logo agencia.png'
 import hero from '../.Mockups/Expedición Altiplánica Uyuni y Reserva Eduardo Abaroa.png'
 import sajamaImage from '../.Mockups/Circuito Cultural y Termal Sajama.png'
 import titicacaImage from '../.Mockups/Travesía Sagrada del Lago e Imperio Inca.png'
@@ -28,7 +29,7 @@ const benefits = [
   ['Alimentación Orgánica Local', 'Cocina de montaña con ingredientes frescos de origen local.'],
 ]
 
-function Logo() { return <a href="#inicio" className="font-display text-lg tracking-tight text-ink no-underline"><span className="mr-2 text-clay">▲</span>RUTA ANDINA</a> }
+function Logo() { return <a href="#inicio" className="flex items-center gap-3 text-lg tracking-tight text-ink no-underline"><img src={logoAgencia} alt="Ruta Andina" className="h-10 w-10 rounded-full border border-stone-200 bg-white object-cover shadow-sm" /><span className="font-display">RUTA ANDINA</span></a> }
 
 function SiteHeader() {
   const [open, setOpen] = useState(false)
