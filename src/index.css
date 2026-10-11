@@ -22,4 +22,17 @@ button, input, textarea { font: inherit; }
 .hero-overlay { background: linear-gradient(90deg, rgb(15 16 13 / 84%), rgb(19 19 16 / 48%) 52%, rgb(16 16 14 / 16%)), linear-gradient(0deg, rgb(0 0 0 / 35%), transparent 60%); }
 .route-image { background: linear-gradient(180deg, transparent, rgb(18 16 13 / 52%)); }
 
+/* Native date inputs show their own localized placeholder. Reserve a label
+   row so it never collides with that browser-provided format hint. */
+.MuiFormControl-root:has(input[type='date']) .MuiInputLabel-root {
+  transform: translate(14px, -9px) scale(.75);
+  transform-origin: top left;
+  background: #fffdf9;
+  padding-inline: 4px;
+}
+.MuiFormControl-root:has(input[type='date']) .MuiOutlinedInput-input {
+  padding-top: 22px;
+  padding-bottom: 8px;
+}
+
 @media (min-width: 768px) { .section-shell { width: min(100% - 4rem, 1280px); } }
