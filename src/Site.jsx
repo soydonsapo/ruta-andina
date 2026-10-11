@@ -46,10 +46,10 @@ function SiteHeader() {
 
 function SectionTitle({ eyebrow, title, copy }) { return <div className="max-w-2xl"><p className="eyebrow mb-2">{eyebrow}</p><h2 className="font-display m-0 text-3xl leading-tight text-ink md:text-4xl">{title}</h2>{copy && <p className="mt-3 text-sm leading-6 text-stone-600 md:text-base">{copy}</p>}</div> }
 
-function Hero() { return <section id="inicio" className="relative flex min-h-[600px] items-end overflow-hidden pt-16 text-white md:min-h-[660px]">
+function Hero() { return <section id="inicio" className="relative flex min-h-[600px] items-end overflow-hidden pt-28 text-white md:min-h-[660px] md:pt-32">
   <img src={hero} alt="Amanecer sobre los Andes peruanos" className="absolute inset-0 h-full w-full object-cover" /><div className="hero-overlay absolute inset-0" />
   <div className="section-shell relative z-10 flex w-full min-w-0 flex-col items-center justify-end pb-10 text-center md:pb-12">
-    <h1 className="font-display m-0 w-full max-w-5xl break-normal text-[clamp(2rem,5.5vw,3.75rem)] leading-[1.08] tracking-tight [overflow-wrap:anywhere]">Donde el alma de Bolivia despierta tu camino.</h1>
+    <h1 className="font-display m-0 w-full max-w-5xl break-normal text-[clamp(2rem,5.5vw,3.75rem)] leading-[1.15] tracking-tight [overflow-wrap:anywhere]">Donde el alma de Bolivia despierta tu camino.</h1>
     <p className="mt-4 w-full max-w-4xl break-normal text-sm leading-6 text-white/85 md:text-base [overflow-wrap:anywhere]">Expediciones auténticas, turismo regenerativo y conexión ancestral a través de los Andes, el Lago Sagrado, valles fértiles y tierras jurásicas. Vive la inmensidad del Altiplano y la riqueza cultural boliviana con el máximo confort consciente.</p>
     <div className="glass mt-8 grid w-full max-w-4xl grid-cols-1 gap-4 rounded-2xl p-5 text-left text-sm text-ink md:grid-cols-3"><Stat icon={<Terrain />} title="+10 años" text="De trayectoria en turismo boliviano" /><Stat icon={<People />} title="Guías especializados" text="Certificados internacionalmente" /><Stat icon={<FavoriteBorder />} title="100% experiencia única" text="Turismo con conciencia" /></div>
   </div>
