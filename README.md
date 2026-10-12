@@ -2,6 +2,10 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
+## Project log
+
+See [BITACORA.md](./BITACORA.md) for the project change history, AI usage record, and commands to run, validate, configure Supabase, and publish the site.
+
 ## Supabase setup
 
 The Supabase CLI is initialized in `supabase/`, and the Supabase JavaScript client is installed.
