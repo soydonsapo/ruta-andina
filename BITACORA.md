@@ -1,6 +1,6 @@
 # Bitácora del proyecto Ruta Andina
 
-**Proyecto:** sitio web de Ruta Andina Ecotours
+**Proyecto:** sitio web de Ruta Andina
 **Tecnologías:** React, Vite, JSX, Material UI, Tailwind CSS y Supabase
 **Hosting:** GitHub Pages
 **Última actualización:** 12 de octubre de 2026
