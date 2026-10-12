@@ -17,7 +17,7 @@ button, input, textarea { font: inherit; }
 #root { min-height: 100svh; }
 
 .section-shell { width: min(100% - 2.5rem, 1280px); margin-inline: auto; }
-.glass { background: rgb(247 245 240 / 76%); border: 1px solid rgb(255 255 255 / 60%); box-shadow: 0 12px 32px rgb(30 22 17 / 9%); backdrop-filter: blur(16px); }
+.glass { background: #fff; border: 1px solid rgb(255 255 255 / 60%); box-shadow: 0 12px 32px rgb(30 22 17 / 9%); }
 .eyebrow { color: #c86d51; font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .hero-overlay { background: linear-gradient(90deg, rgb(15 16 13 / 84%), rgb(19 19 16 / 48%) 52%, rgb(16 16 14 / 16%)), linear-gradient(0deg, rgb(0 0 0 / 35%), transparent 60%); }
 .route-image { background: linear-gradient(180deg, transparent, rgb(18 16 13 / 52%)); }
