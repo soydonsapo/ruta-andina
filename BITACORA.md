@@ -19,6 +19,7 @@ Este documento registra las decisiones y los cambios solicitados durante el desa
 6. **Colores y precios:** se aplicó la paleta solicitada (`#C86D51`, `#F4A935`, `#82C7E0` y negro), se diferenciaron fondos de secciones y se publicaron los precios por persona: Uyuni **800 Bs.**, Sajama **550 Bs.**, Titicaca **700 Bs.**, Luribay **550 Bs.** y Toro Toro **950 Bs.**
 7. **SEO básico:** el documento HTML se configuró en español (`lang="es"`), con un título descriptivo y meta descripción.
 8. **Publicación y verificación:** se regeneró el contenido de `docs/`, que es la carpeta que GitHub Pages sirve desde `main`. Se verificaron compilaciones, lint, respuestas HTTP públicas, bundles publicados y la disponibilidad del endpoint de reservas con validación de datos. La IA asistió con la revisión del código, diagnóstico de una hoja CSS faltante en Pages y comprobaciones de publicación.
+9. **Documento del proyecto:** se preparó `DOCUMENTO_PROYECTO.md` con objetivos, público, catálogo y precios, tecnologías, funcionamiento de Supabase, notas de accesibilidad/SEO y enlaces de entrega.
 
 ## Comandos para trabajar en el proyecto
 
