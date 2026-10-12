@@ -10,6 +10,11 @@ The Supabase CLI is initialized in `supabase/`, and the Supabase JavaScript clie
 2. In the Supabase dashboard, copy the project's URL and anon/publishable key into `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
 3. Import `supabase` from `src/lib/supabase.js` wherever the app needs Supabase.
 4. To connect the CLI to the project, authenticate with `supabase login`, then run `supabase link --project-ref <PROJECT_REF>`.
+5. Apply database changes with `supabase db push --linked`.
+
+The reservation form writes to `public.expedition_reservations`. Its migration enables row-level security and grants browser clients permission to submit requests only; it does not grant permission to read, update, or delete them. The frontend uses only the public anon/publishable key. Never use a `service_role` key in the frontend.
+
+GitHub Pages serves the `main` branch's `docs/` directory. Before publishing frontend changes, build with the configured `.env.local` and copy the generated `dist/` contents into `docs/`; the public Supabase URL and anon/publishable key are included in the browser bundle so the form can connect to the API.
 
 Keep `.env.local` private. Never put a Supabase `service_role` key in frontend code. Enable Row Level Security and appropriate policies for any tables accessed by the browser.
 

@@ -8,6 +8,7 @@ import {
   ArrowForward, Close, DirectionsWalk, Email, FavoriteBorder, Hiking, Menu,
   People, Place, Schedule, Terrain, WhatsApp,
 } from '@mui/icons-material'
+import { supabase } from './lib/supabase'
 import logoAgencia from '../.Mockups/logo agencia.png'
 import hero from '../.Mockups/Expedición Altiplánica Uyuni y Reserva Eduardo Abaroa.png'
 import sajamaImage from '../.Mockups/Circuito Cultural y Termal Sajama.png'
@@ -77,7 +78,42 @@ function Experiences({ onBook }) {
   return <section id="experiencias" className="py-20"><div className="section-shell"><div className="flex flex-wrap items-end justify-between gap-5"><SectionTitle eyebrow="Expediciones destacadas" title="Senderos ancestrales diseñados para transformar" copy="Navega itinerarios creados con equilibrio entre desafío, misticismo andino y servicio de lujo consciente." /><div className="flex flex-col items-end gap-3"><FormControl size="small" className="w-56"><InputLabel id="difficulty-filter-label">Filtrar por nivel</InputLabel><Select labelId="difficulty-filter-label" label="Filtrar por nivel" value={difficulty} onChange={event => setDifficulty(event.target.value)}>{['Todos los niveles', 'Fácil', 'Fácil a medio', 'Medio', 'Exigente'].map(level => <MenuItem key={level} value={level}>{level}</MenuItem>)}</Select></FormControl><Chip icon={<DirectionsWalk />} label={`Explora ${filteredExpeditions.length} ${filteredExpeditions.length === 1 ? 'experiencia' : 'experiencias'}`} variant="outlined" /></div></div><div className="mt-10 grid gap-6 md:grid-cols-3">{filteredExpeditions.map(route => <ExpeditionCard key={route.id} route={route} onSelect={setSelected} />)}</div></div><RouteDialog route={selected} onClose={() => setSelected(null)} onBook={(route) => { setSelected(null); onBook(route) }} /></section>
 }
 
-function Booking({ selectedRoute }) { const [sent, setSent] = useState(false); const [route, setRoute] = useState(selectedRoute?.id || 'salkantay'); return <section id="reserva" className="bg-[#fffdf9] py-20"><div className="section-shell max-w-4xl"><Card elevation={0} className="!rounded-2xl !border !border-stone-200"><CardContent className="!p-6 md:!p-10"><SectionTitle eyebrow="Planifica tu ascenso" title="Formulario de Solicitud de Reserva" copy="Completa estos pasos para recibir disponibilidad, recomendaciones y cotización sin ningún compromiso." /><Box component="form" onSubmit={(e) => { e.preventDefault(); setSent(true) }} className="mt-7 grid gap-4 md:grid-cols-2"><TextField required label="Nombre completo" placeholder="Ej. Mateo Alvarado" fullWidth /><TextField required label="Correo electrónico" type="email" placeholder="explorador@ejemplo.com" fullWidth /><TextField required label="Celular / WhatsApp" placeholder="+51 984 523 491" fullWidth /><TextField required label="Fecha estimada" type="date" InputLabelProps={{ shrink: true }} fullWidth /><FormControl fullWidth className="md:col-span-2"><InputLabel id="route-label">Experiencia seleccionada</InputLabel><Select labelId="route-label" label="Experiencia seleccionada" value={route} onChange={(e) => setRoute(e.target.value)}>{expeditions.map(item => <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>)}</Select></FormControl><TextField label="Requerimientos alimenticios o salud" multiline rows={3} placeholder="Vegetariano, celíaco, experiencia previa en altura…" fullWidth className="md:col-span-2" /><Button type="submit" variant="contained" endIcon={<ArrowForward />} className="md:col-span-2 !rounded-full !bg-clay !py-3">Confirmar solicitud de reserva</Button></Box></CardContent></Card></div><Snackbar open={sent} autoHideDuration={6000} onClose={() => setSent(false)}><Alert severity="success" variant="filled">¡Solicitud recibida! Nuestro equipo te contactará pronto.</Alert></Snackbar></section> }
+function Booking({ selectedRoute }) {
+  const [route, setRoute] = useState(selectedRoute?.id || 'salkantay')
+  const [sending, setSending] = useState(false)
+  const [feedback, setFeedback] = useState(null)
+
+  const submitReservation = async (event) => {
+    event.preventDefault()
+    const formElement = event.currentTarget
+    setSending(true)
+    setFeedback(null)
+
+    try {
+      const form = new FormData(formElement)
+      const { error } = await supabase.from('expedition_reservations').insert({
+        full_name: form.get('full_name'),
+        email: form.get('email'),
+        phone: form.get('phone'),
+        estimated_date: form.get('estimated_date'),
+        expedition_id: route,
+        requirements: form.get('requirements') || null,
+      })
+      if (error) throw error
+
+      formElement.reset()
+      setRoute('salkantay')
+      setFeedback({ severity: 'success', message: '¡Solicitud recibida! Nuestro equipo te contactará pronto.' })
+    } catch (error) {
+      console.error('Failed to submit expedition reservation:', error)
+      setFeedback({ severity: 'error', message: 'No se pudo enviar la solicitud. Inténtalo nuevamente.' })
+    } finally {
+      setSending(false)
+    }
+  }
+
+  return <section id="reserva" className="bg-[#fffdf9] py-20"><div className="section-shell max-w-4xl"><Card elevation={0} className="!rounded-2xl !border !border-stone-200"><CardContent className="!p-6 md:!p-10"><SectionTitle eyebrow="Planifica tu ascenso" title="Formulario de Solicitud de Reserva" copy="Completa estos pasos para recibir disponibilidad, recomendaciones y cotización sin ningún compromiso." /><Box component="form" onSubmit={submitReservation} className="mt-7 grid gap-4 md:grid-cols-2"><TextField required name="full_name" label="Nombre completo" placeholder="Ej. Mateo Alvarado" fullWidth /><TextField required name="email" label="Correo electrónico" type="email" placeholder="explorador@ejemplo.com" fullWidth /><TextField required name="phone" label="Celular / WhatsApp" placeholder="+591 675 26036" fullWidth /><TextField required name="estimated_date" label="Fecha estimada" type="date" InputLabelProps={{ shrink: true }} fullWidth /><FormControl fullWidth className="md:col-span-2"><InputLabel id="route-label">Experiencia seleccionada</InputLabel><Select labelId="route-label" label="Experiencia seleccionada" value={route} onChange={(e) => setRoute(e.target.value)}>{expeditions.map(item => <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>)}</Select></FormControl><TextField name="requirements" label="Requerimientos alimenticios o salud" multiline rows={3} placeholder="Vegetariano, celíaco, experiencia previa en altura…" fullWidth className="md:col-span-2" /><Button type="submit" disabled={sending} variant="contained" endIcon={<ArrowForward />} className="md:col-span-2 !rounded-full !bg-clay !py-3">{sending ? 'Enviando solicitud…' : 'Confirmar solicitud de reserva'}</Button></Box></CardContent></Card></div><Snackbar open={Boolean(feedback)} autoHideDuration={6000} onClose={() => setFeedback(null)}><Alert severity={feedback?.severity ?? 'success'} variant="filled">{feedback?.message}</Alert></Snackbar></section>
+}
 
 function Footer() { return <footer id="contactos" className="bg-stone-100 py-12"><div className="section-shell grid gap-8 text-sm text-stone-600 md:grid-cols-2"><div><Logo /><p className="mt-4 max-w-xs leading-6">Ecoturismo de alta montaña y expediciones conscientes a través de los senderos ancestrales andinos.</p></div><div><p className="eyebrow">Base de operaciones</p><Stack spacing={1.25} className="mt-3"><span><Place className="mr-2 text-clay" fontSize="small" />Av. Perú 1448, villa ingavi</span><span><WhatsApp className="mr-2 text-clay" fontSize="small" />+591 67526036</span><span><Email className="mr-2 text-clay" fontSize="small" />expediciones@rutaandina.eco</span><span><Schedule className="mr-2 text-clay" fontSize="small" />Lunes a sábado · 8:00 AM – 8:00 PM</span></Stack><Chip label="Turismo regenerativo certificado" className="!mt-4 !bg-gold/40 !text-xs" /></div></div><div className="section-shell mt-10 border-t border-stone-300 pt-5 text-xs text-stone-500">© 2026 Ruta Andina Ecotours. Todos los derechos reservados.</div></footer> }
 
