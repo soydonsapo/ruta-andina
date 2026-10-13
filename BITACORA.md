@@ -19,6 +19,7 @@ Este documento registra las decisiones y los cambios solicitados durante el desa
 6. **Colores y precios:** se aplicó la paleta solicitada (`#C86D51`, `#F4A935`, `#82C7E0` y negro), se diferenciaron fondos de secciones y se publicaron los precios por persona: Uyuni **800 Bs.**, Sajama **550 Bs.**, Titicaca **700 Bs.**, Luribay **550 Bs.** y Toro Toro **950 Bs.**
 7. **SEO básico:** el documento HTML se configuró en español (`lang="es"`), con un título descriptivo y meta descripción.
 8. **Publicación y verificación:** se regeneró el contenido de `docs/`, que es la carpeta que GitHub Pages sirve desde `main`. Se verificaron compilaciones, lint, respuestas HTTP públicas, bundles publicados y la disponibilidad del endpoint de reservas con validación de datos. La IA asistió con la revisión del código, diagnóstico de una hoja CSS faltante en Pages y comprobaciones de publicación.
+9. **Corrección permanente del logo y la publicación:** se detectó que un CSS de producción había sido eliminado de `docs/` aunque `index.html` todavía lo solicitaba; al faltar los estilos, el logo se mostraba con sus dimensiones originales. El `.gitignore` ahora permite versionar las imágenes PNG/JPG de `.Mockups/` usadas por React, de modo que logo y rutas están disponibles al clonar el repositorio. El comando `npm.cmd run build:pages` compila, sincroniza Pages, valida los recursos referenciados y elimina únicamente archivos obsoletos del directorio de assets generado.
 
 ## Comandos para trabajar en el proyecto
 
@@ -64,15 +65,14 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
-`dev` inicia Vite para desarrollo local. `lint` revisa el código fuente de `src/`; `build` genera la versión de producción en `dist/`; `preview` sirve localmente esa versión compilada.
+`dev` inicia Vite para desarrollo local. `lint` revisa el código fuente de `src/`; `build` genera la versión de producción en `dist/`; `build:pages` además actualiza `docs/` y valida sus referencias de recursos; `preview` sirve localmente esa versión compilada.
 
 ### Publicar en GitHub Pages
 
-Pages publica la carpeta `docs/` de la rama `main`. Después de compilar con el `.env.local` configurado, copiar el build:
+Pages publica la carpeta `docs/` de la rama `main`. Compilar y sincronizar el build con:
 
 ```powershell
-npm.cmd run build
-Copy-Item -Path 'dist\*' -Destination 'docs' -Recurse -Force
+npm.cmd run build:pages
 ```
 
 Revisar los cambios antes de confirmar y subirlos:

@@ -27,3 +27,12 @@ dist-ssr
 .*
 !.gitignore
 !.env.example
+!.Mockups/
+.Mockups/*
+!.Mockups/logo\ agencia.png
+!.Mockups/Bolivia1.jpg
+!.Mockups/Expedición\ Altiplánica\ Uyuni\ y\ Reserva\ Eduardo\ Abaroa.png
+!.Mockups/Circuito\ Cultural\ y\ Termal\ Sajama.png
+!.Mockups/Travesía\ Sagrada\ del\ Lago\ e\ Imperio\ Inca.png
+!.Mockups/Ruta\ de\ Sabores,\ Tradición\ y\ Viñedos\ de\ Luribay.png
+!.Mockups/Expedición\ Jurásica\ y\ Espeleología\ en\ Toro\ Toro.png

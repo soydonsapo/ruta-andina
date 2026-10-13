@@ -18,7 +18,7 @@ The Supabase CLI is initialized in `supabase/`, and the Supabase JavaScript clie
 
 The reservation form writes to `public.expedition_reservations`. Its migration enables row-level security and grants browser clients permission to submit requests only; it does not grant permission to read, update, or delete them. The frontend uses only the public anon/publishable key. Never use a `service_role` key in the frontend.
 
-GitHub Pages serves the `main` branch's `docs/` directory. Before publishing frontend changes, build with the configured `.env.local` and copy the generated `dist/` contents into `docs/`; the public Supabase URL and anon/publishable key are included in the browser bundle so the form can connect to the API.
+GitHub Pages serves the `main` branch's `docs/` directory. The `.gitignore` explicitly tracks the PNG/JPG source images in `.Mockups/` that the site imports, so a fresh clone has the logo and route images required to build. To publish frontend changes, run `npm.cmd run build:pages`. This builds the app, syncs `dist/` to `docs/`, and checks that every asset referenced by the built HTML exists both before and after syncing. The public Supabase URL and anon/publishable key are included in the browser bundle so the form can connect to the API.
 
 Keep `.env.local` private. Never put a Supabase `service_role` key in frontend code. Enable Row Level Security and appropriate policies for any tables accessed by the browser.
 
